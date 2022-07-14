@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../constant.dart';
+
 class ReplyToCommentView extends StatefulWidget {
   const ReplyToCommentView({Key? key}) : super(key: key);
 
@@ -29,7 +31,7 @@ class _ReplyToCommentViewState extends State<ReplyToCommentView> {
         appBar: const MyCustomAppBar(
           title: 'Reply to Post',
         ),
-        body: true
+        body: Constant.isUseWebside
             ? const Center(
                 child: Text(
                   "For this function use website",

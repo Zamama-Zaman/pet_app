@@ -228,6 +228,7 @@ class HomeLogic extends GetxController {
     'Locate Members',
     'Document Uploader & Reminder',
     'Setting',
+    'Remider',
     // 'Logout',
   ];
   drawerNavigation(
@@ -284,6 +285,11 @@ class HomeLogic extends GetxController {
         {
           Navigator.pop(context);
           return Get.toNamed(PageRoutes.settings);
+        }
+      case 10:
+        {
+          Navigator.pop(context);
+          return Get.toNamed(PageRoutes.reminder);
         }
       default:
         {

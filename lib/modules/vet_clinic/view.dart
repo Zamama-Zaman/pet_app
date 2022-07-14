@@ -1,3 +1,4 @@
+import 'package:fido_mingle/constant.dart';
 import 'package:fido_mingle/utils/colors.dart';
 import 'package:fido_mingle/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _VetClinicViewState extends State<VetClinicView> {
           appBar: const MyCustomAppBar(
             title: 'Vet Clinic',
           ),
-          body: true
+          body: Constant.isUseWebside
               ? forThisFunctionUseWebside()
               : SizedBox(
                   height: MediaQuery.of(context).size.height,

@@ -4,6 +4,7 @@ import 'package:fido_mingle/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../constant.dart';
 import 'logic.dart';
 import 'state.dart';
 
@@ -35,7 +36,7 @@ class _DocumentUploaderAndReminderPageState
           appBar: const MyCustomAppBar(
             title: 'Document Uploader & Reminder',
           ),
-          body: true
+          body: Constant.isUseWebside
               ? const Center(
                   child: Text(
                     "For this function use website",

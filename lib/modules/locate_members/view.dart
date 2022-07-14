@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../constant.dart';
 import 'logic.dart';
 import 'state.dart';
 
@@ -32,7 +33,7 @@ class _LocateMembersPageState extends State<LocateMembersPage> {
           appBar: const MyCustomAppBar(
             title: 'Locate Members',
           ),
-          body: true
+          body: Constant.isUseWebside
               ? const Center(
                   child: Text(
                     "For this function use website",
