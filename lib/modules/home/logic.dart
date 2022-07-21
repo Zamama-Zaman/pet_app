@@ -226,9 +226,9 @@ class HomeLogic extends GetxController {
     'Vet Clinic',
     'Messages',
     'Locate Members',
-    'Document Uploader & Reminder',
+    'Document Uploader',
+    'Reminder',
     'Setting',
-    'Remider',
     // 'Logout',
   ];
   drawerNavigation(
@@ -284,12 +284,12 @@ class HomeLogic extends GetxController {
       case 9:
         {
           Navigator.pop(context);
-          return Get.toNamed(PageRoutes.settings);
+          return Get.toNamed(PageRoutes.reminder);
         }
       case 10:
         {
           Navigator.pop(context);
-          return Get.toNamed(PageRoutes.reminder);
+          return Get.toNamed(PageRoutes.settings);
         }
       default:
         {

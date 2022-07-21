@@ -334,6 +334,6 @@ class _AddNewDocumentViewState extends State<AddNewDocumentView> {
               ),
             ),
           );
-        });
+        },);
   }
 }
