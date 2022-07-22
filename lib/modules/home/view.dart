@@ -346,7 +346,11 @@ class _HomePageState extends State<HomePage> {
                                           ]),
                                       child: Padding(
                                         padding: const EdgeInsets.fromLTRB(
-                                            12, 7, 12, 7),
+                                          12,
+                                          7,
+                                          12,
+                                          7,
+                                        ),
                                         child: Row(
                                           children: [
                                             CircleAvatar(
@@ -408,7 +412,9 @@ class _HomePageState extends State<HomePage> {
                                                 e["yoast_head_json"]["og_image"]
                                                             ?[0]["url"] ==
                                                         null
-                                                    ? "https://fidomingle.com/wp-content/uploads/2018/11/20171207_114401_2.jpg"
+                                                    ?
+                                                    // "https://fidomingle.com/wp-content/uploads/2018/11/20171207_114401_2.jpg"
+                                                    "https://i.quotev.com/img/q/u/15/12/25/78a31e5f80-imag.jpg"
                                                     : e["yoast_head_json"]
                                                         ["og_image"][0]["url"],
                                                 height: 270,

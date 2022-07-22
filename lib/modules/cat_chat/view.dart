@@ -169,34 +169,34 @@ class _CatChatViewState extends State<CatChatView> {
                                       Row(
                                         children: [
                                           ///---like-section
-                                          InkWell(
-                                            onTap: () {},
-                                            child: Padding(
-                                              padding:
-                                                  const EdgeInsets.fromLTRB(
-                                                      0, 10, 0, 0),
-                                              child: Row(
-                                                children: [
-                                                  SvgPicture.asset(
-                                                    'assets/likeIcon.svg',
-                                                    width: 10,
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 7,
-                                                  ),
-                                                  Text(
-                                                    'Liked (15)',
-                                                    style: state
-                                                        .postLikeBarTextStyle,
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
+                                          // InkWell(
+                                          //   onTap: () {},
+                                          //   child: Padding(
+                                          //     padding:
+                                          //         const EdgeInsets.fromLTRB(
+                                          //             0, 10, 0, 0),
+                                          //     child: Row(
+                                          //       children: [
+                                          //         SvgPicture.asset(
+                                          //           'assets/likeIcon.svg',
+                                          //           width: 10,
+                                          //         ),
+                                          //         const SizedBox(
+                                          //           width: 7,
+                                          //         ),
+                                          //         Text(
+                                          //           'Liked (15)',
+                                          //           style: state
+                                          //               .postLikeBarTextStyle,
+                                          //         )
+                                          //       ],
+                                          //     ),
+                                          //   ),
+                                          // ),
 
-                                          const SizedBox(
-                                            width: 25,
-                                          ),
+                                          // const SizedBox(
+                                          //   width: 25,
+                                          // ),
 
                                           ///---reply-section
                                           InkWell(

@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:fido_mingle/api_services/get_service.dart';
 import 'package:fido_mingle/api_services/logic.dart';
 import 'package:fido_mingle/api_services/urls.dart';
-import 'package:fido_mingle/modules/login/login_authorization_model.dart';
+import 'package:fido_mingle/modules/login/login_authorization_param_model.dart';
 import 'package:get/get.dart';
 
 import 'state.dart';
@@ -22,7 +21,7 @@ class LoginLogic extends GetxController {
 
   RxBool isLogin = true.obs;
 
-  LoginAuthorization loginAuthorization = LoginAuthorization();
+  LoginAuthorizationParam loginAuthorizationParam = LoginAuthorizationParam();
 
   Future<bool> signInWithUsernameAndPassword(
       String username, String password) async {
@@ -30,12 +29,15 @@ class LoginLogic extends GetxController {
       log('testing');
       isLogin(true);
       var response = await postRequest(
-          logInURL, {'username': username, 'password': password}, false);
+          logInURL + "?username=$username&password=$password",
+          <String, dynamic>{},
+          false);
+
       if (response != null) {
-        loginAuthorization = LoginAuthorization.fromJson(response);
+        loginAuthorizationParam = LoginAuthorizationParam.fromJson(response);
         Get.find<ApiLogic>()
             .storageBox
-            .write("authToken", loginAuthorization.data!.token);
+            .write("authToken", loginAuthorizationParam.token);
         isLogin(true);
         return true;
       } else {
