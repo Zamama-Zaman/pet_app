@@ -16,6 +16,7 @@ class ChatView extends StatefulWidget {
 }
 
 class _ChatViewState extends State<ChatView> {
+  final MessagsLogic logic = Get.put(MessagsLogic());
   final MessagsState state = Get.find<MessagsLogic>().state;
   TextEditingController sendMessageController = TextEditingController();
   final scrollController = ScrollController();
@@ -33,7 +34,8 @@ class _ChatViewState extends State<ChatView> {
         },
         child: Scaffold(
           appBar: const MyCustomAppBar(
-            title: 'Lisa Minnick',
+            // title: 'Lisa Minnick',
+            title: "Name",
           ),
           body: Stack(
             children: [

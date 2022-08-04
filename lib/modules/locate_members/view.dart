@@ -1,3 +1,4 @@
+import 'package:fido_mingle/modules/locate_members/view_member_detail.dart';
 import 'package:fido_mingle/route_generator.dart';
 import 'package:fido_mingle/utils/colors.dart';
 import 'package:fido_mingle/widgets/custom_appbar.dart';
@@ -171,43 +172,98 @@ class _LocateMembersPageState extends State<LocateMembersPage> {
                       ),
 
                       ///---search-result
-                      Expanded(
-                        child: ListView(
-                          children: List.generate(12, (index) {
-                            return Padding(
-                              padding: const EdgeInsets.fromLTRB(15, 0, 15, 20),
-                              child: Container(
-                                  decoration: BoxDecoration(
-                                      color: customGreyColor,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Padding(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 5, 0, 5),
-                                    child: ListTile(
-                                      onTap: () {
-                                        Get.toNamed(PageRoutes.memberDetail);
-                                      },
-                                      contentPadding:
-                                          const EdgeInsets.fromLTRB(6, 0, 6, 0),
-                                      leading: const CircleAvatar(
-                                        backgroundColor: Colors.grey,
-                                        radius: 20,
+                      GetX<LocateMembersLogic>(
+                        init: LocateMembersLogic(),
+                        builder: (homeLogic) => Expanded(
+                          child: logic.isGetAllMembers.value
+                              ? Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: const [
+                                      Text("Loading..."),
+                                      SizedBox(height: 20),
+                                      CircularProgressIndicator(
+                                        color: customThemeColor,
                                       ),
-                                      title: Text(
-                                        'Ben Brainy',
-                                        maxLines: 1,
-                                        softWrap: true,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: state.titleTextStyle,
-                                      ),
-                                    ),
-                                  )),
-                            );
-                          }),
+                                    ],
+                                  ),
+                                )
+                              : ListView(
+                                  children: List.generate(
+                                    logic.getAllMembersVar.length,
+                                    (index) {
+                                      return Padding(
+                                        padding: const EdgeInsets.fromLTRB(
+                                          15,
+                                          0,
+                                          15,
+                                          20,
+                                        ),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: customGreyColor,
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                          child: Padding(
+                                            padding: const EdgeInsets.fromLTRB(
+                                              0,
+                                              5,
+                                              0,
+                                              5,
+                                            ),
+                                            child: ListTile(
+                                              onTap: () {
+                                                Get.toNamed(
+                                                  PageRoutes.memberDetail,
+                                                  arguments: MemberDetailView(
+                                                    name:
+                                                        logic.getAllMembersVar[
+                                                            index]["name"],
+                                                    image:
+                                                        logic.getAllMembersVar[
+                                                                    index]
+                                                                ["avatar_urls"]
+                                                            ["full"],
+                                                  ),
+                                                );
+                                              },
+                                              contentPadding:
+                                                  const EdgeInsets.fromLTRB(
+                                                6,
+                                                0,
+                                                6,
+                                                0,
+                                              ),
+                                              leading: CircleAvatar(
+                                                backgroundColor: Colors.grey,
+                                                // backgroundImage: NetworkImage(
+                                                //   logic.getAllMembersVar[index]
+                                                //       ["avatar_urls"]["full"],
+                                                // ),
+                                                radius: 20,
+                                              ),
+                                              title: Text(
+                                                'Ben Brainy',
+                                                // logic.getAllMembersVar[index]
+                                                //     ['name'],
+                                                maxLines: 1,
+                                                softWrap: true,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: state.titleTextStyle,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ),
                         ),
                       )
                     ],
-                  )),
+                  ),
+                ),
         ),
       ),
     );

@@ -91,9 +91,14 @@ routes() => [
           name: "/locateMembers",
           page: () => const LocateMembersPage(),
           transition: Transition.fadeIn),
+      //  AllCommentsView _allCommentsView = Get.arguments;
+      // return _allCommentsView;
       GetPage(
           name: "/memberDetail",
-          page: () => const MemberDetailView(),
+          page: () {
+            MemberDetailView _memberDetailView = Get.arguments;
+            return _memberDetailView;
+          },
           transition: Transition.fadeIn),
       GetPage(
           name: "/documentUploaderAndReminder",

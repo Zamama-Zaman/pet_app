@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:fido_mingle/modules/locate_members/logic.dart';
 import 'package:fido_mingle/modules/locate_members/state.dart';
+import 'package:fido_mingle/modules/messags/view_chat.dart';
 import 'package:fido_mingle/utils/colors.dart';
 import 'package:fido_mingle/widgets/custom_appbar.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,13 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MemberDetailView extends StatefulWidget {
-  const MemberDetailView({Key? key}) : super(key: key);
+  final String name;
+  final String image;
+  const MemberDetailView({
+    Key? key,
+    required this.name,
+    required this.image,
+  }) : super(key: key);
 
   @override
   _MemberDetailViewState createState() => _MemberDetailViewState();
@@ -56,27 +63,46 @@ class _MemberDetailViewState extends State<MemberDetailView> {
                     padding: const EdgeInsets.fromLTRB(15, 20, 15, 5),
                     child: ListTile(
                       contentPadding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-                      leading: const CircleAvatar(
+                      leading: CircleAvatar(
                         backgroundColor: Colors.grey,
+                        // child: ClipOval(
+                        //   child: Image.network(
+                        //     widget.image,
+                        //     width: 100,
+                        //     height: 100,
+                        //     fit: BoxFit.cover,
+                        //   ),
+                        // ),
                         radius: 20,
                       ),
                       title: Text(
                         'Ben Brainy',
+                        // widget.name,
                         maxLines: 1,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                         style: state.titleTextStyle,
                       ),
-                      trailing: Container(
-                        height: 36,
-                        width: 110,
-                        decoration: BoxDecoration(
-                            color: customThemeColor,
-                            borderRadius: BorderRadius.circular(8)),
-                        child: Center(
-                          child: Text(
-                            'Send Message',
-                            style: state.smallButtonTextStyle,
+                      trailing: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const ChatView(),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          height: 36,
+                          width: 110,
+                          decoration: BoxDecoration(
+                              color: customThemeColor,
+                              borderRadius: BorderRadius.circular(8)),
+                          child: Center(
+                            child: Text(
+                              'Send Message',
+                              style: state.smallButtonTextStyle,
+                            ),
                           ),
                         ),
                       ),
