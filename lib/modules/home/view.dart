@@ -58,24 +58,6 @@ class _HomePageState extends State<HomePage> {
           ),
           centerTitle: true,
           elevation: 0,
-          actions: [
-            IconButton(
-                onPressed: () async {
-                  // print(Get.find<ApiLogic>().storageBox.read("authToken"));
-
-                  String decodeUserData(String code) {
-                    String normalizedSource =
-                        base64Url.normalize(code.split(".")[1]);
-                    return utf8.decode(base64Url.decode(normalizedSource));
-                  }
-
-                  print(
-                    decodeUserData(
-                        "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvZmlkb21pbmdsZS5jb20iLCJpYXQiOjE2NTg3NDcwNDUsIm5iZiI6MTY1ODc0NzA0NSwiZXhwIjoxNjU5MzUxODQ1LCJkYXRhIjp7InVzZXIiOnsiaWQiOiIyNzE4In19fQ.KtapCvRSvmd-ztjELCegmgGc77NhV9qCPB3nlSl03Lo"),
-                  );
-                },
-                icon: const Icon(Icons.ac_unit)),
-          ],
         ),
         drawer: const MyCustomDrawer(),
         body: SizedBox(
